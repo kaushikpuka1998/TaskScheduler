@@ -63,7 +63,7 @@ public class ScheduledTask implements Comparable<ScheduledTask>{
     @Override
     public int compareTo(ScheduledTask o) {
         int compare = this.nextExecutionTime.compareTo(o.nextExecutionTime);
-        if (compare == 0) {
+        if (compare == 0) { // If Task1 and Task2 are same time then sequenceNumber will be followed like FIFO if sequence is 1 then first , if 2 then second
             return Long.compare(this.sequenceNumber, o.sequenceNumber);
         }
         return compare;

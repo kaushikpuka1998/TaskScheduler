@@ -4,7 +4,7 @@ public class PrintMessageTask implements Task {
     private String message;
 
     public PrintMessageTask(String name) {
-        this.message = message;
+        this.message = name;
     }
 
     @Override
@@ -16,7 +16,7 @@ public class PrintMessageTask implements Task {
     public void execute() throws Exception {
         // Simulate printing a message
         System.out.println("Executing task: " + getName());
-        System.out.println("Message: " + message);
+        System.out.println("Message: " + this.message);
         Thread.sleep(1000); // Simulate time taken to print the message
         System.out.println("Message printed successfully.");
     }

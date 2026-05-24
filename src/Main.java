@@ -26,13 +26,17 @@ public class Main {
                 new RecurringSchedulingStrategy(Duration.ofSeconds(10))
         );
 
+        // Example 1: Using cron expression string (NEW WAY)
+        // Format: "minute hour day-of-week"
         scheduler.schedule(
                 new PrintMessageTask("Weekly Report"),
-                new CronSchedulingStrategy(
-                        1,
-                        0,
-                        DayOfWeek.SUNDAY
-                )
+                new CronSchedulingStrategy("0 2 SUNDAY")  // 2:00 AM on Sunday
+        );
+
+        // Example 2: Using traditional parameters (STILL SUPPORTED)
+        scheduler.schedule(
+                new PrintMessageTask("Daily Task"),
+                new CronSchedulingStrategy(1, 0, DayOfWeek.SUNDAY)  // 12:01 AM on Sunday
         );
         Thread.sleep(30000);
         scheduler.shutDown();
